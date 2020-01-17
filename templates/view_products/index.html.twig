@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ViewProductsController!{% endblock %}
+
+{% block body %}
+	{{parent()}}
+	<!--{{ dump(pagination) }}-->
+<center>
+<div class="count">
+   <!-- {{ pagination.getTotalItemCount }}-->
+</div>
+<br />
+<h2>Productos</h2>
+<br />
+<table class="table" onclick="algo();">
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Codigo Producto', 'a.id') }}</th>
+        <th{% if pagination.isSorted('a.nombre') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nombre Producto', 'a.nombre') }}</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Descripcion', 'a.descripcion') }}</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Marca', 'a.marca') }}</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Categoria', 'a.categoria') }}</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Precio', 'a.precio') }}</th>
+    </tr>
+
+    {# table body #}
+    {% for article in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ article.codigo }}</td>
+            <td>{{ article.nombre }}</td>
+            <td>{{ article.descripcion }}</td>
+            <td>{{ article.marca }}</td>
+            <td>{{ article.categoria }}</td>
+            <td>${{ article.precio }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+</center>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}

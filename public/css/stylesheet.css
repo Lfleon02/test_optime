@@ -1,0 +1,36 @@
+body {
+
+    background-size: 100%;
+    background-attachment: fixed;
+    font-family: signikaregular;
+
+
+}
+
+.navbar{
+    font-size: 1.2em;
+}
+
+.navbar-brand{
+    font-size: 2em;
+}
+
+.fa-user, .bg-yellow {
+    color: #ffd271;
+    font-size: 1.3em;
+}
+.fa-clock, .bg-green{
+    color: #c3f584;
+    font-size: 1.3em;
+}
+
+.cursor:hover{
+    cursor: pointer;
+}
+
+.form_add{
+
+    text-align: center;
+
+}
+

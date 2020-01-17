@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistroProductosController!{% endblock %}
+
+{% block body %}
+{{parent()}}
+<br />
+{% for message in app.flashes('exito') %}
+    <div class="alert alert-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<br />
+
+  <div class="row">
+    <div class="col form_add">
+      {{form(formulario)}}
+    </div>
+  </div>
+
+{% endblock %}
